@@ -14,7 +14,6 @@ defmodule GymsysWeb.HomeLive do
   end
   @impl true
   def mount(_params, _session, socket) do
-
     {:ok,socket}
   end
 

@@ -10,7 +10,7 @@ defmodule GymsysWeb.Plugs.CheckPermission do
     case has_permission?(user_id, opts[:permission]) do
       false  ->
         conn |> put_flash(:permission_erorr,"You don't have permission") |> redirect(to: "/Dashboard") |> halt()
-      _ ->
+      _user_id ->
         conn
     end
   end
