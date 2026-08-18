@@ -4,7 +4,7 @@ defmodule GymsysWeb.HomeLive do
   def render(assigns) do
     ~H"""
     <h1>Welcome to the dashboard login </h1>
-    <.form action="/login" method="post">
+    <.form action="/login" method="post" >
       <input type="text" name="username" />
       <input type="password" name="password" />
       <.button>submit</.button>

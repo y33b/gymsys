@@ -12,9 +12,9 @@ defmodule GymsysWeb.LoginController do
         |> halt()
 
       user ->
-        if Bcrypt.verify_pass(password,user.password_hash) do
+        if Bcrypt.verify_pass(password,user.password_hash) and user.is_active == true do
           conn
-          |> Conn.put_session(:id, user.id)
+          |> Conn.put_session(:user_id, user.id)
           |> Conn.put_session(:username, user.username)
           |> redirect(to: ~p"/dashboard")
           |> halt()

@@ -1,6 +1,6 @@
 defmodule GymsysWeb.CreateLive do
   use GymsysWeb, :live_view
-  on_mount {GymsysWeb.AuthLive, {:permission, "user.edite"}}
+  alias GymsysWeb.Authorization
   @impl true
   def mount(_params,_session, socket) do
     {:ok, socket}
@@ -8,7 +8,13 @@ defmodule GymsysWeb.CreateLive do
   @impl true
   def render(assigns) do
     ~H"""
-    hello
+      hello
+    <div :if={can?(assigns.current_user, "user.create")}>
+      can create user
+    </div>
     """
+  end
+  def can?(user, permission) do
+    Authorization.has_permission?(user.id, permission)
   end
 end

@@ -5,7 +5,7 @@ defmodule GymsysWeb.Plugs.RedirectIfAuth do
     opts
   end
   def call(conn,_opts) do
-    case get_session(conn,:id) do
+    case get_session(conn,:user_id) do
       nil ->
         conn
       _user_id ->

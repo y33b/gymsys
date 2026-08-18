@@ -6,7 +6,7 @@ defmodule GymsysWeb.Plugs.CheckPermission do
     Map.new(opts)
   end
   def call(conn,opts) do
-    user_id = get_session(conn,:id)
+    user_id = get_session(conn,:user_id)
     case has_permission?(user_id, opts[:permission]) do
       false  ->
         conn |> put_flash(:permission_erorr,"You don't have permission") |> redirect(to: "/Dashboard") |> halt()
