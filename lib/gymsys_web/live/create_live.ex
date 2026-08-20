@@ -3,6 +3,7 @@ defmodule GymsysWeb.CreateLive do
   alias GymsysWeb.Authorization
   @impl true
   def mount(_params,_session, socket) do
+    IO.inspect(connected?(socket), label: "CONNECTED")
     {:ok, socket}
   end
   @impl true
